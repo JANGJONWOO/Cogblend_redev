@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #333;
+  /* background-color: #333; */
 }
 
 code {
@@ -13,29 +13,147 @@ code {
     monospace;
 }
 
-.image {
-  position: absolute;
+.parallax-container {
   height: 100vh;
+  /* Full viewport height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1a1a1a;
+  /* Dark background */
+  color: white;
+  /* Text color */
+  padding: 0 5%;
+  /* Add horizontal padding */
 }
 
 .content {
   display: flex;
+  justify-content: space-between;
+  /* Space between text and 3D model */
   align-items: center;
-  justify-content: center;
-  position: absolute;
-  height: 100vh;
   width: 100%;
+  max-width: 1400px;
+  /* Limit overall width */
+  gap: 40px;
+  /* Add space between text and spline */
 }
 
-.content {
-
-  text-transform: capitalize;
-  color: white;
-  padding: 1rem;
-  font-size: medium;
-  letter-spacing: 10px;
+.text-section {
+  flex: 1;
+  /* Text takes 50% of the available space */
+  max-width: 600px;
+  /* Limit width for better readability */
+  animation: fadeIn 1s ease-in;
+  /* Add a smooth fade-in animation */
 }
 
-.content .text {
+.title {
+  font-size: 3rem;
+  /* Increase font size for the title */
+  font-weight: 700;
+  /* Use bold for emphasis */
+  margin-bottom: 15px;
+  line-height: 1.2;
+  /* Slightly tighter line height */
+}
+
+.subtitle {
+  font-size: 1.2rem;
+  /* Adjust font size */
+  line-height: 1.6;
+  /* Add spacing between lines */
+  color: #ccc;
+  /* Softer color for subtitle */
+}
+
+.spline-section {
+  flex: 1;
+  /* 3D model takes 50% of the available space */
+  max-width: 600px;
+  /* Limit the Spline viewer size */
+  height: auto;
+  animation: slideIn 1s ease-in-out;
+  /* Add a smooth slide-in animation */
+  transform: scale(1.2);
+}
+
+/* Fade-in animation for text */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Slide-in animation for Spline */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+    /* Stack text and 3D model vertically */
+    text-align: center;
+    /* Center-align text */
+    gap: 20px;
+    /* Reduce gap for smaller screens */
+  }
+
+  .text-section,
+  .spline-section {
+    flex: unset;
+    /* Reset flex grow/shrink */
+    max-width: 100%;
+    /* Allow full width for both sections */
+  }
+}
+
+/* Navbar */
+/* Navbar Styles */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
   background-color: #333;
+  color: white;
+}
+
+.navbar .logo a {
+  text-decoration: none;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-links li a {
+  text-decoration: none;
+  color: white;
+  font-size: 1rem;
+  transition: color 0.3s;
+}
+
+.nav-links li a:hover {
+  color: #00bcd4;
 }
